@@ -1,142 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bem-vindo ao Acertos Club - TigerClub, baixe o aplicativo oficial e aproveite uma experiência incrível!">
-  <meta name="keywords" content="Acertos Club, Tiger Club, Baixar Aplicativo, App, APK, Jogos, Diversão">
-  <meta name="author" content="Acertos Club">
-  <meta property="og:title" content="Acertos Club - TigerClub">
-  <meta property="og:description" content="Acesse e baixe o aplicativo oficial TigerClub agora mesmo!">
-  <meta property="og:image" content="logo.png">
-  <meta property="og:url" content="https://tigerclub.com.br">
-  <link rel="icon" href="icon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-  <title>Acertos Club - TigerClub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Baixe o TigerClub, um aplicativo de entretenimento e diversão para todas as idades. Aproveite conteúdos exclusivos e experiências interativas." />
+  <meta name="keywords" content="TigerClub, aplicativo, diversão, entretenimento, app, baixar" />
+  <meta name="author" content="Acertos Club" />
+  <title>TigerClub - Aplicativo de Diversão e Entretenimento</title>
+  <link rel="icon" href="icon.png" type="image/png" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      background-color: #f57c00;
       font-family: 'Poppins', sans-serif;
-      color: #000;
-      overflow-x: hidden;
-    }
-    header {
+      background: linear-gradient(135deg, #f57c00, #ffb347);
+      margin: 0;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      animation: fadeInZoom 1s ease;
+      padding: 20px;
     }
     header img {
-      max-width: 220px;
+      max-width: 180px;
+      margin-bottom: 1rem;
     }
     h1 {
       font-family: 'Luckiest Guy', cursive;
-      font-size: 3rem;
-      text-align: center;
+      font-size: 2.8rem;
       color: #000;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
-    .container {
-      text-align: center;
-      padding: 2rem;
+    p.subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #333;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
+      margin-bottom: 3rem;
     }
     .btn {
       padding: 1rem 2.5rem;
-      border: 4px solid #000;
+      font-weight: 700;
+      font-size: 1.3rem;
       border-radius: 50px;
-      font-size: 1.5rem;
-      font-weight: bold;
+      border: 3px solid #222;
       cursor: pointer;
-      transition: transform 0.2s;
-      min-width: 200px;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-    }
-    .btn-blue {
-      background-color: #00a6d6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-width: 180px;
       color: #fff;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    .btn-green {
-      background-color: #34c759;
-      color: #fff;
+    .btn-download {
+      background-color: #007acc;
+      border-color: #005f99;
+    }
+    .btn-download:hover {
+      background-color: #005f99;
+    }
+    .btn-play {
+      background-color: #28a745;
+      border-color: #1e7e34;
+    }
+    .btn-play:hover {
+      background-color: #1e7e34;
+    }
+    main {
+      max-width: 700px;
+      width: 100%;
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+      margin-bottom: 2rem;
+      text-align: left;
+      color: #444;
+    }
+    main h2 {
+      color: #f57c00;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    main p {
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
     footer {
+      font-size: 0.9rem;
+      color: #333;
+      max-width: 700px;
       text-align: center;
-      padding: 2rem 1rem;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    footer a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    nav {
+      margin-bottom: 2rem;
       font-size: 0.95rem;
-      color: #000;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #f57c00;
       font-weight: 600;
-    }
-    /* Popup */
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .popup img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 10px;
-    }
-    .popup .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: #fff;
       cursor: pointer;
+      text-decoration: none;
     }
-    @keyframes fadeInZoom {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
+    nav a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="popup" id="popup">
-    <span class="close" onclick="document.getElementById('popup').style.display='none'">&times;</span>
-    <img id="popupImage" src="" alt="Boas-vindas">
-  </div>
 
-  <header>
-    <img src="icon.png" alt="Mascote TigerClub">
-    <h1>TIGER CLUB</h1>
-  </header>
+<header>
+  <img src="icon.png" alt="Mascote TigerClub" />
+  <h1>TigerClub</h1>
+  <p class="subtitle">O aplicativo de entretenimento que reúne diversão e experiências interativas para você.</p>
+</header>
 
-  <div class="container">
-    <div class="buttons">
-      <button class="btn btn-blue" onclick="window.location.href='tigerclub.apk'">BAIXAR APP</button>
-      <button class="btn btn-green" onclick="window.location.href='https://app.tigersclub.vip/pr/hOprBfRL'">JOGAR</button>
-    </div>
-  </div>
+<div class="buttons">
+  <button class="btn btn-download" onclick="window.location.href='tigerclub.apk'">Baixar Aplicativo</button>
+  <button class="btn btn-play" onclick="window.location.href='https://api.whatsapp.com/send?phone=5583991177252&text=Ol%C3%A1%2C%20quero%20o%20aplicativo%20da%20TIGERCLUB'">Entrar no App</button>
+</div>
 
-  <footer>
-    &copy; 2025 Acertos Club - TigerClub. Todos os direitos reservados. Este site está em conformidade com as diretrizes do Google Ads.
-  </footer>
+<main id="content">
+  <h2>Sobre o TigerClub</h2>
+  <p>TigerClub é um aplicativo focado em diversão e entretenimento digital, trazendo conteúdos exclusivos e uma experiência interativa para todas as idades.</p>
+  <p>Baixe agora e descubra um novo jeito de se divertir com amigos e familiares, com muitas novidades e atualizações constantes.</p>
 
-  <script>
-    // Detecta mobile ou desktop e mostra imagem correta
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const imgSrc = isMobile ? 'cba.png' : 'dba.png';
-    document.getElementById('popupImage').src = imgSrc;
-  </script>
+  <h2>Termos de Uso</h2>
+  <p>Ao utilizar o aplicativo TigerClub, você concorda em respeitar todas as regras e diretrizes estabelecidas para garantir uma experiência segura e agradável para todos os usuários.</p>
+  <p>O uso do aplicativo é destinado apenas para fins de entretenimento e diversão. É proibido utilizar o TigerClub para fins ilegais ou não autorizados.</p>
+
+  <h2>Política de Privacidade</h2>
+  <p>O TigerClub respeita sua privacidade e se compromete a proteger seus dados pessoais. Todas as informações coletadas são usadas apenas para melhorar a sua experiência dentro do aplicativo.</p>
+  <p>Não compartilhamos seus dados com terceiros sem sua autorização expressa.</p>
+</main>
+
+<nav>
+  <a href="#content">Voltar ao conteúdo</a> |
+  <a href="#terms">Termos de Uso</a> |
+  <a href="#privacy">Política de Privacidade</a>
+</nav>
+
+<footer>
+  &copy; 2025 Acertos Club - TigerClub. Todos os direitos reservados.
+</footer>
+
 </body>
 </html>
+
