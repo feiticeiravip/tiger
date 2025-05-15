@@ -3,60 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Renda Extra com Tiger Club</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="/icon.webp">
-
-  <!-- Meta Tags para SEO -->
-  <meta name="description" content="Ganhe renda extra com o Tiger Club! Acesse acertosclub, tiger.club e muito mais para transformar seu tempo em dinheiro.">
-  <meta name="keywords" content="tigerclub.com.br, acertosclub, acertos.club, tiger clube, tiger.club, renda extra, ganhar dinheiro online, renda digital, trabalhar em casa, oportunidades digitais, clube de renda, clube de acertos, dinheiro extra">
-  <meta name="author" content="Tiger Club">
-
-  <!-- Estilos -->
+  <meta name="description" content="Bem-vindo ao Acertos Club - TigerClub, baixe o aplicativo oficial e aproveite uma experiência incrível!">
+  <meta name="keywords" content="Acertos Club, Tiger Club, Baixar Aplicativo, App, APK, Jogos, Diversão">
+  <meta name="author" content="Acertos Club">
+  <meta property="og:title" content="Acertos Club - TigerClub">
+  <meta property="og:description" content="Acesse e baixe o aplicativo oficial TigerClub agora mesmo!">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:url" content="https://tigerclub.com.br">
+  <link rel="icon" href="icon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <title>Acertos Club - TigerClub</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      overflow: hidden;
+      box-sizing: border-box;
     }
-
-    iframe {
-      position: absolute;
+    body {
+      background-color: #f57c00;
+      font-family: 'Poppins', sans-serif;
+      color: #000;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      animation: fadeInZoom 1s ease;
+    }
+    header img {
+      max-width: 220px;
+    }
+    h1 {
+      font-family: 'Luckiest Guy', cursive;
+      font-size: 3rem;
+      text-align: center;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 1rem 2.5rem;
+      border: 4px solid #000;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+      min-width: 200px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn-blue {
+      background-color: #00a6d6;
+      color: #fff;
+    }
+    .btn-green {
+      background-color: #34c759;
+      color: #fff;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      color: #000;
+      font-weight: 600;
+    }
+    /* Popup */
+    .popup {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      z-index: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
+    .popup img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
     }
-
-    .whatsapp-float img {
-      width: 60px;
-      height: 60px;
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
       cursor: pointer;
+    }
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Site de fundo -->
-  <iframe src="https://app.tigersclub.vip/pr/hOprBfRL" allowfullscreen></iframe>
-
-  <!-- Ícone flutuante do WhatsApp -->
-  <div class="whatsapp-float">
-    <a href="https://api.whatsapp.com/send?phone=5583991177252&text=Ol%C3%A1%2C%20suporte.%20Necessito%20de%20ajuda!" target="_blank" rel="noopener">
-      <img src="https://img.icons8.com/color/96/000000/whatsapp.png" alt="Fale conosco no WhatsApp" />
-    </a>
+  <div class="popup" id="popup">
+    <span class="close" onclick="document.getElementById('popup').style.display='none'">&times;</span>
+    <img id="popupImage" src="" alt="Boas-vindas">
   </div>
 
+  <header>
+    <img src="icon.png" alt="Mascote TigerClub">
+    <h1>TIGER CLUB</h1>
+  </header>
+
+  <div class="container">
+    <div class="buttons">
+      <button class="btn btn-blue" onclick="window.location.href='tigerclub.apk'">BAIXAR APP</button>
+      <button class="btn btn-green" onclick="window.location.href='https://app.tigersclub.vip/pr/hOprBfRL'">JOGAR</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Acertos Club - TigerClub. Todos os direitos reservados. Este site está em conformidade com as diretrizes do Google Ads.
+  </footer>
+
+  <script>
+    // Detecta mobile ou desktop e mostra imagem correta
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const imgSrc = isMobile ? 'cba.png' : 'dba.png';
+    document.getElementById('popupImage').src = imgSrc;
+  </script>
 </body>
 </html>
