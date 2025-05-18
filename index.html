@@ -2,165 +2,957 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Baixe o TigerClub, um aplicativo de entretenimento e diversão para todas as idades. Aproveite conteúdos exclusivos e experiências interativas." />
-  <meta name="keywords" content="TigerClub, aplicativo, diversão, entretenimento, app, baixar" />
-  <meta name="author" content="Acertos Club" />
-  <title>TigerClub - Aplicativo de Diversão e Entretenimento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIGER CLUB</title>
+  <meta name="description" content="Tiger Club Oficial - Jogos, Palpites e Suporte" />
+  <meta name="keywords" content="tiger club, jogos, palpites, cassino, suporte" />
   <link rel="icon" href="icon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f57c00, #ffb347);
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      color: #222;
+      padding: 0;
+    }
+    body, html {
+      font-family: 'Roboto', sans-serif;
+      background: #f4f6f8;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #ffffff, #f9fafb);
+      display: flex;
       align-items: center;
-      text-align: center;
-      padding: 20px;
+      justify-content: center;
+      padding: 8px 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      height: 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     header img {
-      max-width: 180px;
-      margin-bottom: 1rem;
+      height: 30px;
+      margin-right: 8px;
+      transition: transform 0.2s;
     }
-    h1 {
-      font-family: 'Luckiest Guy', cursive;
-      font-size: 2.8rem;
-      color: #000;
-      margin-bottom: 0.5rem;
+    header img:hover {
+      transform: scale(1.1);
     }
-    p.subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #333;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .btn {
-      padding: 1rem 2.5rem;
+    header h1 {
+      font-size: 16px;
       font-weight: 700;
-      font-size: 1.3rem;
-      border-radius: 50px;
-      border: 3px solid #222;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      min-width: 180px;
-      color: #fff;
-      user-select: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: #1a1a1a;
+      letter-spacing: 0.5px;
     }
-    .btn-download {
-      background-color: #007acc;
-      border-color: #005f99;
+    #main-content {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 60px;
     }
-    .btn-download:hover {
-      background-color: #005f99;
-    }
-    .btn-play {
-      background-color: #28a745;
-      border-color: #1e7e34;
-    }
-    .btn-play:hover {
-      background-color: #1e7e34;
-    }
-    main {
-      max-width: 700px;
+    #jogar, #palpites-container, #sobre {
       width: 100%;
-      background: #fff;
-      padding: 2rem 2.5rem;
-      border-radius: 15px;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-      margin-bottom: 2rem;
-      text-align: left;
-      color: #444;
+      transition: opacity 0.3s ease-in-out;
     }
-    main h2 {
-      color: #f57c00;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
+    #palpites-container {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      display: none;
     }
-    main p {
-      line-height: 1.5;
-      margin-bottom: 1rem;
+    #palpites, #sobre {
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      width: 100%;
+      opacity: 0;
+    }
+    #palpites.visible, #sobre.visible {
+      opacity: 1;
+    }
+    #sobre {
+      display: none;
+      max-width: 600px;
+      margin: 16px auto;
+    }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 100px);
+      border: none;
+      display: block;
     }
     footer {
-      font-size: 0.9rem;
-      color: #333;
-      max-width: 700px;
-      text-align: center;
-      margin-bottom: 1rem;
-      user-select: none;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 16px;
+      border-top: 1px solid #e0e0e0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
     }
-    footer a {
-      color: #007acc;
-      text-decoration: none;
+    footer button {
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 500;
+      color: #444;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 60px;
+      justify-content: center;
     }
-    footer a:hover {
-      text-decoration: underline;
+    footer button:hover, footer button:active {
+      color: #222;
+      background: #f1f3f5;
     }
-    nav {
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
+    footer button:active {
+      transform: scale(0.95);
     }
-    nav a {
-      margin: 0 10px;
-      color: #f57c00;
+    select, input, button:not(footer button) {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      font-size: 14px;
+      width: 100%;
+      margin: 8px 0;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23444' viewBox='0 0 16 16'%3E%3Cpath d='M8 11.5l-6-6L3.5 4l4.5 4.5L12.5 4 14 5.5l-6 6z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+    input[type="text"], input[type="tel"], input[type="number"] {
+      appearance: none;
+    }
+    select:focus, input:focus, button:focus {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+      outline: none;
+    }
+    button:not(footer button) {
+      background: #f59e0b;
+      color: #fff;
       font-weight: 600;
       cursor: pointer;
-      text-decoration: none;
+      border: none;
+      transition: background 0.2s, transform 0.1s;
     }
-    nav a:hover {
-      text-decoration: underline;
+    button:not(footer button):hover {
+      background: #d97706;
+    }
+    button:not(footer button):active {
+      transform: scale(0.98);
+    }
+    button.green {
+      background: #10b981;
+    }
+    button.green:hover {
+      background: #059669;
+    }
+    button:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+      transform: none;
+    }
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 16px;
+      background: #f9fafb;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s;
+    }
+    .section:hover {
+      transform: translateY(-2px);
+    }
+    .palpite-result, .puxadas, .sobre-content {
+      margin: 12px 0;
+      padding: 16px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+    .milhares {
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2 {
+      color: #f59e0b;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    h3 {
+      color: #374151;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+      font-size: 14px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+    .hidden {
+      display: none;
+    }
+    .error {
+      color: #ef4444;
+      font-size: 14px;
+      margin: 10px 0;
+      padding: 10px;
+      background: #fef2f2;
+      border-radius: 6px;
+    }
+    .success {
+      color: #10b981;
+      font-size: 14px;
+      margin: 10px 0;
+      padding: 10px;
+      background: #ecfdf5;
+      border-radius: 6px;
+    }
+    .loading {
+      font-size: 14px;
+      color: #374151;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .loading::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 2px solid #f59e0b;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #palpites-container, #sobre {
+        padding: 12px;
+      }
+      #palpites, #sobre {
+        max-width: 100%;
+      }
+      header {
+        padding: 6px 12px;
+      }
+      header img {
+        height: 28px;
+      }
+      header h1 {
+        font-size: 14px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      select, input, button:not(footer button) {
+        font-size: 13px;
+        padding: 10px;
+      }
+      footer {
+        padding: 8px 12px;
+      }
+      footer button {
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+      iframe {
+        height: calc(100vh - 90px);
+      }
+      table {
+        font-size: 13px;
+      }
+      th, td {
+        padding: 6px;
+      }
+    }
+    @media (max-width: 400px) {
+      footer {
+        flex-direction: column;
+        height: auto;
+        padding: 12px;
+        gap: 8px;
+      }
+      footer button {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="icon.png" alt="Icon" onerror="console.warn('Falha ao carregar icon.png'); this.src='https://picsum.photos/34';" />
+    <h1>TIGER CLUB OFICIAL</h1>
+  </header>
 
-<header>
-  <img src="icon.png" alt="Mascote TigerClub" />
-  <h1>TigerClub</h1>
-  <p class="subtitle">O aplicativo de entretenimento que reúne diversão e experiências interativas para você.</p>
-</header>
+  <div id="main-content">
+    <div id="jogar">
+      <iframe src="https://app.tigersclub.vip/pr/hOprBfRL" loading="lazy"></iframe>
+    </div>
+    <div id="palpites-container">
+      <div id="palpites">
+        <div class="section">
+          <h2>Gerar Palpites</h2>
+          <label for="bancaSelect">Escolha a Banca:</label>
+          <select id="bancaSelect">
+            <option value="">Selecione uma banca</option>
+            <option value="PT Rio">PT Rio</option>
+            <option value="Look GO">Look GO</option>
+            <option value="Nacional">Nacional</option>
+            <option value="Maluca BA">Maluca BA</option>
+            <option value="Lotep">Lotep</option>
+          </select>
+          <button id="gerarPalpites" disabled>Gerar Palpites</button>
+          <div class="palpite-result" id="palpiteOutput"></div>
+        </div>
+        <div class="section">
+          <h2>Consultar Puxadas</h2>
+          <label for="animalSelect">Escolha um Animal:</label>
+          <select id="animalSelect">
+            <option value="">Selecione um animal</option>
+          </select>
+          <button id="verPuxada" class="hidden">Ver Puxadas</button>
+          <div class="puxadas" id="puxadaResult"></div>
+        </div>
+      </div>
+    </div>
+    <div id="sobre">
+      <div class="section">
+        <h2>Sobre</h2>
+        <div class="sobre-content">
+          <p>Nosso aplicativo oferece bônus incríveis:</p>
+          <ul>
+            <li>30% de bônus para novos cadastros na primeira recarga.</li>
+            <li>20% de bônus nos dias de federais.</li>
+            <li>15% de bônus em dias normais.</li>
+          </ul>
+          <h3>Cotação</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Valor (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Unidade</td><td>8,00</td></tr>
+              <tr><td>Grupo</td><td>20,00</td></tr>
+              <tr><td>Dezena</td><td>80,00</td></tr>
+              <tr><td>Centena</td><td>800,00</td></tr>
+              <tr><td>Milhar</td><td>8.000,00</td></tr>
+              <tr><td>Duque GP</td><td>180,00</td></tr>
+              <tr><td>Terno GP</td><td>1.500,00</td></tr>
+              <tr><td>Quadra GP</td><td>1.000,00</td></tr>
+              <tr><td>Quina GP (8/5)</td><td>1.000,00</td></tr>
+              <tr><td>Sena GP (10/6)</td><td>1.000,00</td></tr>
+              <tr><td>Duque Dez</td><td>300,00</td></tr>
+              <tr><td>Terno Dez Seco</td><td>10.000,00</td></tr>
+              <tr><td>Terno Dez</td><td>5.000,00</td></tr>
+              <tr><td>Passe Vai</td><td>90,00</td></tr>
+              <tr><td>Passe Vai Vem</td><td>45,00</td></tr>
+            </tbody>
+          </table>
+          <h3>QUER SER PROMOTOR? PREENCHA ABAIXO</h3>
+          <label for="promotorName">Nome:</label>
+          <input type="text" id="promotorName" required placeholder="Seu nome completo" />
+          <label for="promotorPhone">Telefone:</label>
+          <input type="tel" id="promotorPhone" required placeholder="+5583999999999" pattern="\+55[0-9]{10,11}" />
+          <label for="promotorServiceTime">Tempo de Serviço:</label>
+          <input type="text" id="promotorServiceTime" required placeholder="Ex: 2 anos" />
+          <button id="enviarPromotor">Enviar</button>
+          <p><strong>Comissões:</strong> 7% no Jogo do Bicho (podendo chegar a 10%), 10% no Cassino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="buttons">
-  <button class="btn btn-download" onclick="window.location.href='tigerclub.apk'">Baixar Aplicativo</button>
-  <button class="btn btn-play" onclick="window.location.href='https://app.tigersclub.vip/pr/hOprBfRL'">Entrar no App</button>
-</div>
+  <footer>
+    <button onclick="window.open('https://wa.me/5583991177252?text=Suporte%2C+preciso+de+ajuda', '_blank')">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M13.6 2.4A8 8 0 0 0 0 8c0 1.8.6 3.5 1.7 4.9L1 15l2.1-.7A8 8 0 0 0 8 16c4.4 0 8-3.6 8-8a8 8 0 0 0-2.4-5.6zM8 14.5a6.5 6.5 0 0 1-3.7-1.1l-.3-.1-.7.2-1.2.4.4-1.2.2-.7-.1-.3A6.5 6.5 0 0 1 8 1.5a6.5 6.5 0 0 1 6.5 6.5A6.5 6.5 0 0 1 8 14.5zm2.3-4.7c-.1 0-.2 0-.3-.1-.2-.1-1-.5-1.2-.6-.2-.1-.4-.2-.5-.3-.2-.1-.3-.2-.5-.4-.1-.2-.2-.4-.3-.6-.1-.2-.1-.4-.2-.5 0-.1-.1-.2-.2-.3-.1-.1-.2-.2-.3-.3-.1-.1-.2-.2-.3-.3-.1-.1-.2-.2-.1-.3.1-.1.2-.3.3-.4.1-.1.2-.2.3-.3.1-.1.1-.2.1-.3s0-.2-.1-.3c-.1-.1-.2-.3-.3-.4-.1-.1-.2-.2-.4-.2H6.8c-.2 0-.4 0-.5.1-.1 0-.2.1-.3.2-.1.1-.2.2-.3.3-.1.2-.2.4-.2.6 0 .2 0 .4.1.6.1.2.2.4.3.6.1.2.3.4.5.6.2.2.4.4.7.6.3.2.6.4 1 .5.3.1.7.2 1.1.2h.3c.2 0 .4-.1.6-.2.2-.1.3-.2.4-.4.1-.2.1-.4.1-.6 0-.2-.1-.3-.2-.4z"/>
+      </svg>
+      Suporte
+    </button>
+    <button onclick="window.open('https://app.tigersclub.vip/pr/hOprBfRL', '_blank')">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM8 4a1 1 0 0 0-1 1v3.6l-2.3-2.3a1 1 0 0 0-1.4 1.4l3 3a1 1 0 0 0 1.4 0l3-3a1 1 0 0 0-1.4-1.4L9 8.6V5a1 1 0 0 0-1-1z"/>
+      </svg>
+      Cassino
+    </button>
+    <button onclick="mostrar('jogar')">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM6 5l4 3-4 3V5z"/>
+      </svg>
+      Jogar
+    </button>
+    <button onclick="mostrar('palpites')">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM8 4a1 1 0 0 0-1 1v5a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"/>
+      </svg>
+      Palpites
+    </button>
+    <button onclick="mostrar('sobre')">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM8 11.5a.75.75 0 0 1-.75.75h-.5a.75.75 0 0 1 0-1.5h.5a.75.75 0 0 1 .75.75zm0-2a.75.75 0 0 1-.75.75h-.5a.75.75 0 0 1 0-1.5h.5a.75.75 0 0 1 .75.75zm.75-3.25a.75.75 0 0 1-1.5 0 .25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5a1.75 1.75 0 0 1 1.75 1.75z"/>
+      </svg>
+      Sobre
+    </button>
+  </footer>
 
-<main id="content">
-  <h2>Sobre o TigerClub</h2>
-  <p>TigerClub é um aplicativo focado em diversão e entretenimento digital, trazendo conteúdos exclusivos e uma experiência interativa para todas as idades.</p>
-  <p>Baixe agora e descubra um novo jeito de se divertir com amigos e familiares, com muitas novidades e atualizações constantes.</p>
+  <script>
+    try {
+      const animals = [
+        { name: 'Avestruz', emoji: '🦢', group: 1, tens: ['01', '02', '03', '04'] },
+        { name: 'Águia', emoji: '🦅', group: 2, tens: ['05', '06', '07', '08'] },
+        { name: 'Burro', emoji: '🦙', group: 3, tens: ['09', '10', '11', '12'] },
+        { name: 'Borboleta', emoji: '🦋', group: 4, tens: ['13', '14', '15', '16'] },
+        { name: 'Cachorro', emoji: '🐶', group: 5, tens: ['17', '18', '19', '20'] },
+        { name: 'Cabra', emoji: '🐐', group: 6, tens: ['21', '22', '23', '24'] },
+        { name: 'Carneiro', emoji: '🐏', group: 7, tens: ['25', '26', '27', '28'] },
+        { name: 'Camelo', emoji: '🐪', group: 8, tens: ['29', '30', '31', '32'] },
+        { name: 'Cobra', emoji: '🐍', group: 9, tens: ['33', '34', '35', '36'] },
+        { name: 'Coelho', emoji: '🐰', group: 10, tens: ['37', '38', '39', '40'] },
+        { name: 'Cavalo', emoji: '🐎', group: 11, tens: ['41', '42', '43', '44'] },
+        { name: 'Elefante', emoji: '🐘', group: 12, tens: ['45', '46', '47', '48'] },
+        { name: 'Galo', emoji: '🐓', group: 13, tens: ['49', '50', '51', '52'] },
+        { name: 'Gato', emoji: '🐱', group: 14, tens: ['53', '54', '55', '56'] },
+        { name: 'Jacaré', emoji: '🐊', group: 15, tens: ['57', '58', '59', '60'] },
+        { name: 'Leão', emoji: '🦁', group: 16, tens: ['61', '62', '63', '64'] },
+        { name: 'Macaco', emoji: '🐒', group: 17, tens: ['65', '66', '67', '68'] },
+        { name: 'Porco', emoji: '🐷', group: 18, tens: ['69', '70', '71', '72'] },
+        { name: 'Pavão', emoji: '🦚', group: 19, tens: ['73', '74', '75', '76'] },
+        { name: 'Peru', emoji: '🦃', group: 20, tens: ['77', '78', '79', '80'] },
+        { name: 'Touro', emoji: '🐂', group: 21, tens: ['81', '82', '83', '84'] },
+        { name: 'Tigre', emoji: '🐅', group: 22, tens: ['85', '86', '87', '88'] },
+        { name: 'Urso', emoji: '🐻', group: 23, tens: ['89', '90', '91', '92'] },
+        { name: 'Veado', emoji: '🦌', group: 24, tens: ['93', '94', '95', '96'] },
+        { name: 'Vaca', emoji: '🐄', group: 25, tens: ['97', '98', '99', '00'] }
+      ];
 
-  <h2>Termos de Uso</h2>
-  <p>Ao utilizar o aplicativo TigerClub, você concorda em respeitar todas as regras e diretrizes estabelecidas para garantir uma experiência segura e agradável para todos os usuários.</p>
-  <p>O uso do aplicativo é destinado apenas para fins de entretenimento e diversão. É proibido utilizar o TigerClub para fins ilegais ou não autorizados.</p>
+      const bancas = {
+        'PT Rio': {
+          schedules: {
+            'Domingo': ['09:30', '11:30', '14:30', '16:30'],
+            'Segunda': ['09:30', '11:30', '14:30', '16:30', '18:30', '21:30'],
+            'Terça': ['09:30', '11:30', '14:30', '16:30', '18:30', '21:30'],
+            'Quarta': ['09:30', '11:30', '14:30', '16:30', '19:00', '21:30'],
+            'Quinta': ['09:30', '11:30', '14:30', '16:30', '18:30', '21:30'],
+            'Sexta': ['09:30', '11:30', '14:30', '16:30', '18:30', '21:30'],
+            'Sábado': ['09:30', '11:30', '14:30', '16:30', '19:00', '21:30']
+          }
+        },
+        'Look GO': {
+          schedules: {
+            'Domingo': ['09:00', '11:00', '14:00', '16:00', '18:00', '21:00'],
+            'Segunda': ['09:00', '11:00', '14:00', '16:00', '18:00', '21:00'],
+            'Terça': ['09:00', '11:00', '14:00', '16:00', '18:00', '21:00'],
+            'Quarta': ['09:00', '11:00', '14:00', '16:00', '18:00', '19:00', '21:00'],
+            'Quinta': ['09:00', '11:00', '14:00', '16:00', '18:00', '21:00'],
+            'Sexta': ['09:00', '11:00', '14:00', '16:00', '18:00', '21:00'],
+            'Sábado': ['09:00', '11:00', '14:00', '16:00', '18:00', '19:00', '21:00']
+          }
+        },
+        'Nacional': {
+          schedules: {
+            'Domingo': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Segunda': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Terça': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Quarta': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Quinta': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Sexta': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00'],
+            'Sábado': ['02:00', '08:00', '10:00', '12:00', '15:00', '17:00', '20:00', '23:00']
+          }
+        },
+        'Maluca BA': {
+          schedules: {
+            'Domingo': ['10:00', '12:00', '15:00'],
+            'Segunda': ['10:00', '12:00', '15:00', '19:00', '21:00'],
+            'Terça': ['10:00', '12:00', '15:00', '19:00', '21:00'],
+            'Quarta': ['10:00', '12:00', '15:00', '19:00', '21:00'],
+            'Quinta': ['10:00', '12:00', '15:00', '19:00', '21:00'],
+            'Sexta': ['10:00', '12:00', '15:00', '19:00', '21:00'],
+            'Sábado': ['10:00', '12:00', '15:00', '19:00', '21:00']
+          }
+        },
+        'Lotep': {
+          schedules: {
+            'Domingo': ['10:45', '12:45'],
+            'Segunda': ['10:45', '12:45', '15:45', '18:00'],
+            'Terça': ['10:45', '12:45', '15:45', '18:00'],
+            'Quarta': ['10:45', '12:45', '15:45', '18:00', '19:00'],
+            'Quinta': ['10:45', '12:45', '15:45', '18:00'],
+            'Sexta': ['10:45', '12:45', '15:45', '18:00'],
+            'Sábado': ['10:45', '12:45', '15:45', '18:00', '19:00']
+          }
+        }
+      };
 
-  <h2>Política de Privacidade</h2>
-  <p>O TigerClub respeita sua privacidade e se compromete a proteger seus dados pessoais. Todas as informações coletadas são usadas apenas para melhorar a sua experiência dentro do aplicativo.</p>
-  <p>Não compartilhamos seus dados com terceiros sem sua autorização expressa.</p>
-</main>
+      const puxadas = {
+        'Avestruz': ['Pavão', 'Águia', 'Galo'],
+        'Águia': ['Avestruz', 'Galo', 'Pavão'],
+        'Burro': ['Cavalo', 'Vaca', 'Touro'],
+        'Borboleta': ['Gato', 'Cobra', 'Coelho'],
+        'Cachorro': ['Galo', 'Camelo', 'Macaco'],
+        'Cabra': ['Vaca', 'Carneiro', 'Touro'],
+        'Carneiro': ['Cabra', 'Vaca', 'Touro'],
+        'Camelo': ['Cachorro', 'Urso', 'Avestruz'],
+        'Cobra': ['Borboleta', 'Jacaré', 'Gato'],
+        'Coelho': ['Borboleta', 'Gato', 'Cobra'],
+        'Cavalo': ['Burro', 'Vaca', 'Carneiro'],
+        'Elefante': ['Urso', 'Touro', 'Leão'],
+        'Galo': ['Avestruz', 'Águia', 'Pavão'],
+        'Gato': ['Borboleta', 'Cobra', 'Coelho'],
+        'Jacaré': ['Cobra', 'Porco', 'Borboleta'],
+        'Leão': ['Elefante', 'Tigre', 'Urso'],
+        'Macaco': ['Cachorro', 'Gato', 'Leão'],
+        'Porco': ['Jacaré', 'Vaca', 'Cabra'],
+        'Pavão': ['Avestruz', 'Galo', 'Águia'],
+        'Peru': ['Galo', 'Pavão', 'Avestruz'],
+        'Touro': ['Carneiro', 'Vaca', 'Cabra'],
+        'Tigre': ['Leão', 'Porco', 'Elefante'],
+        'Urso': ['Camelo', 'Elefante', 'Leão'],
+        'Veado': ['Coelho', 'Borboleta', 'Gato'],
+        'Vaca': ['Cabra', 'Carneiro', 'Touro']
+      };
 
-<nav>
-  <a href="#content">Voltar ao conteúdo</a> |
-  <a href="#terms">Termos de Uso</a> |
-  <a href="#privacy">Política de Privacidade</a>
-</nav>
+      function mostrar(id) {
+        console.log(`mostrar: id=${id}`);
+        try {
+          const jogar = document.getElementById('jogar');
+          const palpitesContainer = document.getElementById('palpites-container');
+          const sobre = document.getElementById('sobre');
+          if (!jogar || !palpitesContainer || !sobre) {
+            console.error('Elementos jogar, palpites-container ou sobre não encontrados');
+            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            return;
+          }
+          jogar.style.display = id === 'jogar' ? 'block' : 'none';
+          palpitesContainer.style.display = id === 'palpites' ? 'block' : 'none';
+          sobre.style.display = id === 'sobre' ? 'block' : 'none';
+          const palpites = document.getElementById('palpites');
+          if (palpites) {
+            palpites.classList.toggle('visible', id === 'palpites');
+          }
+          sobre.classList.toggle('visible', id === 'sobre');
+          if (id === 'palpites') {
+            const animalSelect = document.getElementById('animalSelect');
+            const bancaSelect = document.getElementById('bancaSelect');
+            const palpiteOutput = document.getElementById('palpiteOutput');
+            if (animalSelect && bancaSelect && palpiteOutput) {
+              palpiteOutput.innerHTML = '';
+              populateAnimalSelect();
+              handlePuxada();
+            } else {
+              console.error('Elementos animalSelect, bancaSelect ou palpiteOutput não encontrados');
+              palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            }
+          } else if (id === 'sobre') {
+            setupPromotorForm();
+          }
+        } catch (e) {
+          console.error('Erro na função mostrar:', e);
+          const palpitesContainer = document.getElementById('palpites-container');
+          if (palpitesContainer) {
+            palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          } else {
+            document.body.innerHTML = '<p class="error">Erro crítico ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          }
+        }
+      }
 
-<footer>
-  &copy; 2025 Acertos Club - TigerClub. Todos os direitos reservados.
-</footer>
+      function generateMilhar() {
+        try {
+          return Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        } catch (e) {
+          console.error('Erro na função generateMilhar:', e);
+          return '0000';
+        }
+      }
 
+      function getAnimalByMilhar(milhar) {
+        try {
+          const tens = milhar.slice(-2);
+          return animals.find(animal => animal.tens.includes(tens)) || animals[0];
+        } catch (e) {
+          console.error('Erro na função getAnimalByMilhar:', e);
+          return animals[0];
+        }
+      }
+
+      function getNextDrawTime(banca, now) {
+        console.log(`getNextDrawTime: banca=${banca}, now=${now}`);
+        try {
+          if (!bancas[banca]) {
+            console.warn(`Banca inválida: ${banca}`);
+            return null;
+          }
+          const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+          const today = days[now.getDay()];
+          const schedules = bancas[banca].schedules[today];
+          if (!schedules || schedules.length === 0) {
+            console.warn(`Nenhum horário encontrado para ${banca} em ${today}`);
+            return null;
+          }
+
+          const nowTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+          const nextTime = schedules.find(time => time > nowTime) || schedules[0];
+          let nextDate = new Date(now);
+
+          if (!schedules.find(time => time > nowTime)) {
+            nextDate.setDate(now.getDate() + 1);
+          }
+
+          const [hours, minutes] = nextTime.split(':');
+          nextDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+          console.log(`getNextDrawTime: nextTime=${nextTime}, nextDate=${nextDate}`);
+          return { time: nextTime, date: nextDate };
+        } catch (e) {
+          console.error('Erro na função getNextDrawTime:', e);
+          return null;
+        }
+      }
+
+      function generatePalpites(banca, drawTime) {
+        console.log(`generatePalpites: banca=${banca}, drawTime=${drawTime}`);
+        try {
+          const key = `palpites_${banca}_${drawTime}`;
+          const stored = localStorage.getItem(key);
+          if (stored) {
+            console.log(`Palpites recuperados do localStorage: ${key}`);
+            return JSON.parse(stored);
+          }
+
+          const palpites = [];
+          for (let i = 0; i < 10; i++) {
+            const milhar = generateMilhar();
+            const animal = getAnimalByMilhar(milhar);
+            palpites.push({ milhar, animal: `${animal.emoji} ${animal.name}` });
+          }
+
+          localStorage.setItem(key, JSON.stringify(palpites));
+          console.log(`Palpites gerados e salvos: ${key}`);
+          return palpites;
+        } catch (e) {
+          console.error('Erro na função generatePalpites:', e);
+          return [];
+        }
+      }
+
+      function shareOnWhatsApp(banca, drawTime, palpites) {
+        console.log(`shareOnWhatsApp: banca=${banca}, drawTime=${drawTime}`);
+        try {
+          const message = `Palpites para ${banca} - ${drawTime}:\n${palpites.map(p => `${p.milhar} - ${p.animal}`).join('\n')}\n\nACESSE O SITE:\nhttps://tigerclub.com.br/`;
+          const encodedMessage = encodeURIComponent(message);
+          window.open(`https://api.whatsapp.com/send?text=${encodedMessage}`, '_blank');
+        } catch (e) {
+          console.error('Erro na função shareOnWhatsApp:', e);
+        }
+      }
+
+      function displayPalpites() {
+        console.log('displayPalpites: Iniciando');
+        try {
+          const bancaSelect = document.getElementById('bancaSelect');
+          const palpiteOutput = document.getElementById('palpiteOutput');
+          const gerarPalpitesBtn = document.getElementById('gerarPalpites');
+
+          if (!bancaSelect || !palpiteOutput || !gerarPalpitesBtn) {
+            throw new Error('Elementos bancaSelect, palpiteOutput ou gerarPalpitesBtn não encontrados');
+          }
+
+          palpiteOutput.innerHTML = '<p class="loading">Carregando palpites...</p>';
+
+          const selectedBanca = bancaSelect.value;
+          console.log(`displayPalpites: selectedBanca=${selectedBanca}`);
+          if (!selectedBanca) {
+            palpiteOutput.innerHTML = '<p class="error">Por favor, selecione uma banca e clique em "Gerar Palpites".</p>';
+            gerarPalpitesBtn.disabled = true;
+            return;
+          }
+
+          gerarPalpitesBtn.disabled = false;
+          const now = new Date();
+          const nextDraw = getNextDrawTime(selectedBanca, now);
+          console.log(`displayPalpites: nextDraw=${JSON.stringify(nextDraw)}`);
+          if (!nextDraw) {
+            palpiteOutput.innerHTML = '<p class="error">Nenhum horário disponível para hoje.</p>';
+            return;
+          }
+
+          const palpites = generatePalpites(selectedBanca, nextDraw.time);
+          console.log(`displayPalpites: palpites=${JSON.stringify(palpites)}`);
+          if (palpites.length === 0) {
+            palpiteOutput.innerHTML = '<p class="error">Erro ao gerar palpites. Tente novamente.</p>';
+            return;
+          }
+
+          palpiteOutput.innerHTML = `
+            <div>
+              <h3>${selectedBanca} - ${nextDraw.time}</h3>
+              <ul class="mt-3 list-disc pl-5">
+                ${palpites.map(p => `<li class="milhares">${p.milhar} - ${p.animal}</li>`).join('')}
+              </ul>
+              <button id="shareWhatsApp" class="mt-4 green">Compartilhar no WhatsApp</button>
+            </div>
+          `;
+
+          const shareButton = document.getElementById('shareWhatsApp');
+          if (shareButton) {
+            shareButton.addEventListener('click', () => {
+              shareOnWhatsApp(selectedBanca, nextDraw.time, palpites);
+            });
+          } else {
+            console.error('Botão shareWhatsApp não encontrado');
+          }
+        } catch (e) {
+          console.error('Erro na função displayPalpites:', e);
+          const palpiteOutput = document.getElementById('palpiteOutput');
+          if (palpiteOutput) {
+            palpiteOutput.innerHTML = '<p class="error">Erro ao carregar os palpites. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          }
+        }
+      }
+
+      function populateAnimalSelect() {
+        console.log('populateAnimalSelect: Iniciando');
+        try {
+          const select = document.getElementById('animalSelect');
+          if (!select) {
+            throw new Error('Elemento animalSelect não encontrado');
+          }
+          select.innerHTML = '<option value="">Selecione um animal</option>';
+          animals.forEach(animal => {
+            const option = document.createElement('option');
+            option.value = animal.name;
+            option.textContent = `${animal.emoji} ${animal.name}`;
+            select.appendChild(option);
+          });
+          console.log('populateAnimalSelect: Concluído');
+        } catch (e) {
+          console.error('Erro na função populateAnimalSelect:', e);
+          const puxadaResult = document.getElementById('puxadaResult');
+          if (puxadaResult) {
+            puxadaResult.innerHTML = '<p class="error">Erro ao carregar os animais. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          }
+        }
+      }
+
+      function handlePuxada() {
+        console.log('handlePuxada: Iniciando');
+        try {
+          const select = document.getElementById('animalSelect');
+          const verPuxada = document.getElementById('verPuxada');
+          const puxadaResult = document.getElementById('puxadaResult');
+
+          if (!select || !verPuxada || !puxadaResult) {
+            throw new Error('Elementos de puxada não encontrados');
+          }
+
+          select.addEventListener('change', () => {
+            console.log(`animalSelect change: value=${select.value}`);
+            verPuxada.classList.toggle('hidden', !select.value);
+            puxadaResult.innerHTML = '';
+          });
+
+          verPuxada.addEventListener('click', () => {
+            console.log(`verPuxada click: animal=${select.value}`);
+            const animal = select.value;
+            if (!animal) {
+              puxadaResult.innerHTML = '<p class="error">Selecione um animal para ver as puxadas.</p>';
+              return;
+            }
+
+            const pulls = puxadas[animal] || [];
+            puxadaResult.innerHTML = `
+              <div>
+                <h3>Puxadas para ${animal}</h3>
+                <ul class="list-disc pl-5 mt-2">
+                  ${pulls.length ? pulls.map(pull => `<li>${animals.find(a => a.name === pull).emoji} ${pull}</li>`).join('') : '<li>Nenhuma puxada disponível.</li>'}
+                </ul>
+              </div>
+            `;
+          });
+        } catch (e) {
+          console.error('Erro na função handlePuxada:', e);
+          const puxadaResult = document.getElementById('puxadaResult');
+          if (puxadaResult) {
+            puxadaResult.innerHTML = '<p class="error">Erro ao carregar as puxadas. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          }
+        }
+      }
+
+      function setupPromotorForm() {
+        console.log('setupPromotorForm: Iniciando');
+        try {
+          const sobre = document.getElementById('sobre');
+          const nameInput = document.getElementById('promotorName');
+          const phoneInput = document.getElementById('promotorPhone');
+          const serviceTimeInput = document.getElementById('promotorServiceTime');
+          const submitButton = document.getElementById('enviarPromotor');
+
+          if (!sobre || !nameInput || !phoneInput || !serviceTimeInput || !submitButton) {
+            throw new Error('Elementos do formulário de promotores não encontrados');
+          }
+
+          submitButton.addEventListener('click', () => {
+            console.log('enviarPromotor click');
+            try {
+              const name = nameInput.value.trim();
+              const phone = phoneInput.value.trim();
+              const serviceTime = serviceTimeInput.value.trim();
+
+              if (!name || !phone || !serviceTime) {
+                const existingError = sobre.querySelector('.error');
+                if (existingError) existingError.remove();
+                sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Por favor, preencha todos os campos.</p>';
+                return;
+              }
+
+              if (!phone.match(/\+55[0-9]{10,11}/)) {
+                const existingError = sobre.querySelector('.error');
+                if (existingError) existingError.remove();
+                sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Telefone inválido. Use o formato +5583999999999.</p>';
+                return;
+              }
+
+              const message = `Novo promotor:\nNome: ${name}\nTelefone: ${phone}\nTempo de serviço: ${serviceTime}`;
+              const encodedMessage = encodeURIComponent(message);
+              window.open(`https://api.whatsapp.com/send?phone=5583991177252&text=${encodedMessage}`, '_blank');
+
+              nameInput.value = '';
+              phoneInput.value = '';
+              serviceTimeInput.value = '';
+              const existingError = sobre.querySelector('.error');
+              if (existingError) existingError.remove();
+              sobre.querySelector('.sobre-content').innerHTML += '<p class="success">Dados enviados com sucesso!</p>';
+              setTimeout(() => {
+                const successMsg = sobre.querySelector('.success');
+                if (successMsg) successMsg.remove();
+              }, 3000);
+            } catch (e) {
+              console.error('Erro ao enviar formulário de promotores:', e);
+              const existingError = sobre.querySelector('.error');
+              if (existingError) existingError.remove();
+              sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Erro ao enviar os dados. Tente novamente.</p>';
+            }
+          });
+        } catch (e) {
+          console.error('Erro na função setupPromotorForm:', e);
+          const sobre = document.getElementById('sobre');
+          if (sobre) {
+            sobre.innerHTML = '<p class="error">Erro ao carregar o formulário. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded: Iniciando');
+        try {
+          const bancaSelect = document.getElementById('bancaSelect');
+          const gerarPalpitesBtn = document.getElementById('gerarPalpites');
+          if (!bancaSelect || !gerarPalpitesBtn) {
+            console.error('Elementos bancaSelect ou gerarPalpitesBtn não encontrados');
+            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            return;
+          }
+
+          bancaSelect.addEventListener('change', () => {
+            console.log(`bancaSelect change: value=${bancaSelect.value}`);
+            const palpiteOutput = document.getElementById('palpiteOutput');
+            if (palpiteOutput) {
+              palpiteOutput.innerHTML = '';
+            }
+            gerarPalpitesBtn.disabled = !bancaSelect.value;
+          });
+
+          gerarPalpitesBtn.addEventListener('click', () => {
+            console.log('gerarPalpitesBtn click');
+            displayPalpites();
+          });
+
+          mostrar('jogar');
+        } catch (e) {
+          console.error('Erro na inicialização:', e);
+          document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+        }
+      });
+
+      // Suppress NotAllowedError from service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          for (let registration of registrations) {
+            registration.unregister().catch(e => console.warn('Erro ao desregistrar service worker:', e));
+          }
+        }).catch(e => console.warn('Erro ao obter registros de service worker:', e));
+      }
+    } catch (e) {
+      console.error('Erro global:', e);
+      document.body.innerHTML = '<p class="error">Erro crítico ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+    }
+  </script>
 </body>
 </html>
-
