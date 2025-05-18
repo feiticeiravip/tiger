@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIGER CLUB</title>
-  <meta name="description" content="Tiger Club Oficial - Jogos, Palpites e Suporte" />
-  <meta name="keywords" content="tiger club, jogos, palpites, cassino, suporte" />
+  <title>TIGER CLUB - Cadastros novos ganham 30% de bônus</title>
+  <meta name="description" content="Tiger Club Oficial - Cadastros novos ganham 30% de Bônus" />
+  <meta name="keywords" content="tiger club, aplicativo online" />
   <link rel="icon" href="icon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
@@ -89,9 +89,9 @@
     footer {
       background: #ffffff;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
-      padding: 10px 16px;
+      padding: 8px;
       border-top: 1px solid #e0e0e0;
       position: fixed;
       bottom: 0;
@@ -99,6 +99,8 @@
       height: 50px;
       box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
       z-index: 10;
+      gap: 4px;
+      max-width: 100%;
     }
     footer button {
       background: none;
@@ -113,8 +115,13 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      min-width: 60px;
+      min-width: 50px;
+      min-height: 44px;
+      flex: 1;
       justify-content: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
     footer button:hover, footer button:active {
       color: #222;
@@ -313,11 +320,15 @@
         padding: 10px;
       }
       footer {
-        padding: 8px 12px;
+        padding: 8px;
+        height: 48px;
+        gap: 4px;
       }
       footer button {
-        font-size: 11px;
-        padding: 6px 10px;
+        font-size: 10px;
+        padding: 6px 8px;
+        min-width: 50px;
+        flex-shrink: 1;
       }
       iframe {
         height: calc(100vh - 90px);
@@ -327,18 +338,6 @@
       }
       th, td {
         padding: 6px;
-      }
-    }
-    @media (max-width: 400px) {
-      footer {
-        flex-direction: column;
-        height: auto;
-        padding: 12px;
-        gap: 8px;
-      }
-      footer button {
-        width: 100%;
-        justify-content: center;
       }
     }
   </style>
