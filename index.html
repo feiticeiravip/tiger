@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIGER CLUB - Cadastros novos ganham  heavily % de bônus</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; frame-src *; connect-src *;">
+  <title>TIGER CLUB - Cadastros novos ganham 30% de bônus</title>
   <meta name="description" content="Tiger Club Oficial - Cadastros novos ganham 30% de Bônus" />
   <meta name="keywords" content="tiger club, aplicativo online" />
   <link rel="icon" href="icon.webp" type="image/webp" />
@@ -292,7 +293,6 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    /* Responsive Design */
     @media (max-width: 768px) {
       #palpites-container, #sobre {
         padding: 12px;
@@ -349,7 +349,7 @@
 
   <div id="main-content">
     <div id="jogar">
-      <iframe src="https://app.tigersclub.vip/pr/hOprBfRL" loading="lazy"></iframe>
+      <iframe id="embeddedIframe" allow="clipboard-read; clipboard-write" src="https://app.tigersclub.vip/pr/hOprBfRL" loading="lazy" sandbox="allow-scripts allow-same-origin allow-clipboard-write"></iframe>
     </div>
     <div id="palpites-container">
       <div id="palpites">
@@ -591,42 +591,41 @@
           const jogar = document.getElementById('jogar');
           const palpitesContainer = document.getElementById('palpites-container');
           const sobre = document.getElementById('sobre');
-          if (!jogar || !palpitesContainer || !sobre) {
-            console.error('Elementos jogar, palpites-container ou sobre não encontrados');
+          const palpites = document.getElementById('palpites');
+
+          if (!jogar || !palpitesContainer || !sobre || !palpites) {
+            console.error('Um ou mais elementos principais não encontrados:', { jogar, palpitesContainer, sobre, palpites });
             document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
             return;
           }
+
           jogar.style.display = id === 'jogar' ? 'block' : 'none';
           palpitesContainer.style.display = id === 'palpites' ? 'block' : 'none';
           sobre.style.display = id === 'sobre' ? 'block' : 'none';
-          const palpites = document.getElementById('palpites');
-          if (palpites) {
-            palpites.classList.toggle('visible', id === 'palpites');
-          }
+
+          palpites.classList.toggle('visible', id === 'palpites');
           sobre.classList.toggle('visible', id === 'sobre');
+
           if (id === 'palpites') {
             const animalSelect = document.getElementById('animalSelect');
             const bancaSelect = document.getElementById('bancaSelect');
             const palpiteOutput = document.getElementById('palpiteOutput');
             if (animalSelect && bancaSelect && palpiteOutput) {
+              console.log('Inicializando seção Palpites');
               palpiteOutput.innerHTML = '';
               populateAnimalSelect();
               handlePuxada();
             } else {
-              console.error('Elementos animalSelect, bancaSelect ou palpiteOutput não encontrados');
-              palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+              console.error('Elementos de palpites não encontrados:', { animalSelect, bancaSelect, palpiteOutput });
+              palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção Palpites. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
             }
           } else if (id === 'sobre') {
+            console.log('Inicializando seção Sobre');
             setupPromotorForm();
           }
         } catch (e) {
           console.error('Erro na função mostrar:', e);
-          const palpitesContainer = document.getElementById('palpites-container');
-          if (palpitesContainer) {
-            palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
-          } else {
-            document.body.innerHTML = '<p class="error">Erro crítico ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
-          }
+          document.body.innerHTML = '<p class="error">Erro crítico ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
         }
       }
 
