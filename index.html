@@ -59,6 +59,58 @@
             color: #1a1a1a;
             letter-spacing: 0.5px;
         }
+        .banner {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            position: sticky;
+            top: 40px;
+            z-index: 9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .banner span {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .banner .banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .banner a {
+            background: #f59e0b;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .banner a:hover {
+            background: #d97706;
+            transform: scale(1.02);
+        }
+        .banner .close-banner {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color 0.2s;
+        }
+        .banner .close-banner:hover {
+            color: #f59e0b;
+        }
         #main-content {
             flex: 1;
             overflow-y: auto;
@@ -318,6 +370,20 @@
             header h1 {
                 font-size: 14px;
             }
+            .banner {
+                font-size: 13px;
+                padding: 8px 16px;
+            }
+            .banner span {
+                font-size: 14px;
+            }
+            .banner a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .banner .close-banner {
+                font-size: 16px;
+            }
             h2 {
                 font-size: 18px;
             }
@@ -355,6 +421,13 @@
     <header>
         <h1>TIGER CLUB OFICIAL</h1>
     </header>
+    <div class="banner" id="partnerBanner">
+        <span>BANCA PARCEIRA</span>
+        <div class="banner-actions">
+            <a href="https://app.vaidarboa.com/pr/dnEq8Ahj" target="_blank">ACESSAR</a>
+            <button class="close-banner" onclick="document.getElementById('partnerBanner').style.display='none'">×</button>
+        </div>
+    </div>
 
     <div id="main-content">
         <div id="jogar">
