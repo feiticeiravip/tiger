@@ -116,7 +116,7 @@
             overflow-y: auto;
             padding-bottom: 60px;
         }
-        #jogar, #palpites-container, #sobre {
+        #jogar, #palpites-container, #parceiros {
             width: 100%;
             transition: opacity 0.3s ease-in-out;
         }
@@ -126,7 +126,7 @@
             margin: 0 auto;
             display: none;
         }
-        #palpites, #sobre {
+        #palpites, #parceiros {
             padding: 16px;
             background: #ffffff;
             border-radius: 12px;
@@ -134,10 +134,10 @@
             width: 100%;
             opacity: 0;
         }
-        #palpites.visible, #sobre.visible {
+        #palpites.visible, #parceiros.visible {
             opacity: 1;
         }
-        #sobre {
+        #parceiros {
             display: none;
             max-width: 600px;
             margin: 16px auto;
@@ -259,7 +259,7 @@
         .section:hover {
             transform: translateY(-2px);
         }
-        .palpite-result, .puxadas, .sobre-content {
+        .palpite-result, .puxadas, .parceiros-content {
             margin: 12px 0;
             padding: 16px;
             background: #ffffff;
@@ -354,11 +354,89 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        .parceiros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .parceiro-item {
+            text-align: center;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .parceiro-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .parceiro-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .parceiro-item a {
+            display: inline-block;
+            background: #f59e0b;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.1s;
+            margin-bottom: 8px;
+        }
+        .parceiro-item a:hover {
+            background: #d97706;
+            transform: scale(1.02);
+        }
+        .parceiro-item details {
+            margin-top: 12px;
+        }
+        .parceiro-item summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #f59e0b;
+            list-style: none;
+            padding: 8px;
+            background: #ffffff;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .parceiro-item summary:hover {
+            background: #f1f3f5;
+        }
+        .parceiro-item details[open] summary {
+            border-radius: 6px 6px 0 0;
+        }
+        .parceiro-item .info-content {
+            padding: 12px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            font-size: 13px;
+        }
+        .parceiro-item .info-content ul {
+            padding-left: 16px;
+            margin: 0;
+        }
+        .parceiro-item .info-content li {
+            margin-bottom: 4px;
+        }
         @media (max-width: 768px) {
-            #palpites-container, #sobre {
+            #palpites-container, #parceiros {
                 padding: 12px;
             }
-            #palpites, #sobre {
+            #palpites, #parceiros {
                 max-width: 100%;
             }
             header {
@@ -414,6 +492,16 @@
             th, td {
                 padding: 6px;
             }
+            .parceiros-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .parceiro-item img {
+                height: 100px;
+            }
+            .parceiro-item .info-content {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -421,13 +509,6 @@
     <header>
         <h1>TIGER CLUB OFICIAL</h1>
     </header>
-    <div class="banner" id="partnerBanner">
-        <span>BANCA PARCEIRA</span>
-        <div class="banner-actions">
-            <a href="https://app.vaidarboa.com/pr/dnEq8Ahj" target="_blank">ACESSAR</a>
-            <button class="close-banner" onclick="document.getElementById('partnerBanner').style.display='none'">×</button>
-        </div>
-    </div>
 
     <div id="main-content">
         <div id="jogar">
@@ -460,59 +541,40 @@
                 </div>
             </div>
         </div>
-        <div id="sobre">
+        <div id="parceiros">
             <div class="section">
-                <h2>Sobre</h2>
-                <div class="sobre-content">
-                    <p>Nosso aplicativo oferece bônus incríveis:</p>
-                    <ul>
-                        <li>30% de bônus para novos cadastros na primeira recarga.</li>
-                        <li>20% de bônus nos dias de federais.</li>
-                        <li>15% de bônus em dias normais.</li>
-                    </ul>
-                    <h3>Cotação</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Valor (R$)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Unidade</td><td>8,00</td></tr>
-                            <tr><td>Grupo</td><td>20,00</td></tr>
-                            <tr><td>Dezena</td><td>80,00</td></tr>
-                            <tr><td>Centena</td><td>800,00</td></tr>
-                            <tr><td>Milhar</td><td>8.000,00</td></tr>
-                            <tr><td>Duque GP</td><td>180,00</td></tr>
-                            <tr><td>Terno GP</td><td>1.500,00</td></tr>
-                            <tr><td>Quadra GP</td><td>1.000,00</td></tr>
-                            <tr><td>Quina GP (8/5)</td><td>1.000,00</td></tr>
-                            <tr><td>Sena GP (10/6)</td><td>1.000,00</td></tr>
-                            <tr><td>Duque Dez</td><td>300,00</td></tr>
-                            <tr><td>Terno Dez Seco</td><td>10.000,00</td></tr>
-                            <tr><td>Terno Dez</td><td>5.000,00</td></tr>
-                            <tr><td>Passe Vai</td><td>90,00</td></tr>
-                            <tr><td>Passe Vai Vem</td><td>45,00</td></tr>
-                        </tbody>
-                    </table>
-                    <h3>Políticas e Privacidade</h3>
-                    <div class="sobre-content">
-                        <p><strong>Política de Privacidade</strong></p>
-                        <p>No Tiger Club, protegemos seus dados pessoais com o mais alto padrão de segurança. Coletamos apenas informações necessárias para oferecer nossos serviços, como nome, telefone e tempo de serviço para promotores. Esses dados não são compartilhados com terceiros, exceto quando exigido por lei ou com seu consentimento explícito. Usamos cookies para melhorar a experiência do usuário, mas você pode desativá-los nas configurações do navegador.</p>
-                        <p><strong>Termos de Uso</strong></p>
-                        <p>Ao usar o Tiger Club, você concorda em cumprir nossas regras. Nosso serviço é destinado a maiores de 18 anos, e o uso indevido, como tentativa de fraude, resultará em suspensão da conta. Os bônus são creditados conforme as regras promocionais e não podem ser transferidos. Nos reservamos o direito de atualizar estes termos a qualquer momento, com notificação prévia aos usuários.</p>
-                        <p>Para dúvidas, entre em contato pelo nosso suporte no WhatsApp: <a href="https://wa.me/5583993370071">+55 83 99117-7252</a>.</p>
+                <h2>Bancas Parceiras</h2>
+                <div class="parceiros-content">
+                    <div class="parceiros-grid">
+                        <div class="parceiro-item">
+                            <img src="vaidarboa.png" alt="Vaidarboa" />
+                            <a href="https://app.vaidarboa.com/pr/dnEq8Ahj" target="_blank">Acessar Aplicativo</a>
+                            <details>
+                                <summary>INFORMAÇÕES DO APP</summary>
+                                <div class="info-content">
+                                    <ul>
+                                        <li>30% de bônus para novos cadastros até R$ 100,00</li>
+                                        <li>15% de bônus em dias de federais (sem limite)</li>
+                                        <li>10% de bônus em dias normais (sem limite)</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="parceiro-item">
+                            <img src="jaguar.png" alt="Jaguar" />
+                            <a href="https://app.bancajaguar.bet/pr/A84ZCLOU" target="_blank">Acessar Aplicativo</a>
+                            <details>
+                                <summary>INFORMAÇÕES DO APP</summary>
+                                <div class="info-content">
+                                    <ul>
+                                        <li>30% de bônus para novos cadastros até R$ 1.000,00</li>
+                                        <li>15% de bônus em dias de federais até R$ 10.000,00</li>
+                                        <li>11% de bônus em dias normais (sem limite)</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
                     </div>
-                    <h3>QUER SER PROMOTOR? PREENCHA ABAIXO</h3>
-                    <label for="promotorName">Nome:</label>
-                    <input type="text" id="promotorName" required placeholder="Seu nome completo" />
-                    <label for="promotorPhone">Telefone:</label>
-                    <input type="tel" id="promotorPhone" required placeholder="+5583999999999" pattern="\+55[0-9]{10,11}" />
-                    <label for="promotorServiceTime">Tempo de Serviço:</label>
-                    <input type="text" id="promotorServiceTime" required placeholder="Ex: 2 anos" />
-                    <button id="enviarPromotor">Enviar</button>
-                    <p><strong>Comissões:</strong> 7% no Jogo do Bicho (podendo chegar a 10%), 10% no Cassino.</p>
                 </div>
             </div>
         </div>
@@ -543,11 +605,11 @@
             </svg>
             Palpites
         </button>
-        <button onclick="mostrar('sobre')">
+        <button onclick="mostrar('parceiros')">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM8 11.5a.75.75 0 0 1-.75.75h-.5a.75.75 0 0 1 0-1.5h.5a.75.75 0 0 1 .75.75zm0-2a.75.75 0 0 1-.75.75h-.5a.75.75 0 0 1 0-1.5h.5a.75.75 0 0 1 .75.75zm.75-3.25a.75.75 0 0 1-1.5 0 .25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5a1.75 1.75 0 0 1 1.75 1.75z"/>
             </svg>
-            Sobre
+            Parceiros
         </button>
     </footer>
 
@@ -672,21 +734,21 @@
                 try {
                     const jogar = document.getElementById('jogar');
                     const palpitesContainer = document.getElementById('palpites-container');
-                    const sobre = document.getElementById('sobre');
+                    const parceiros = document.getElementById('parceiros');
                     const palpites = document.getElementById('palpites');
 
-                    if (!jogar || !palpitesContainer || !sobre || !palpites) {
-                        console.error('Um ou mais elementos principais não encontrados:', { jogar, palpitesContainer, sobre, palpites });
+                    if (!jogar || !palpitesContainer || !parceiros || !palpites) {
+                        console.error('Um ou mais elementos principais não encontrados:', { jogar, palpitesContainer, parceiros, palpites });
                         document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                         return;
                     }
 
                     jogar.style.display = id === 'jogar' ? 'block' : 'none';
                     palpitesContainer.style.display = id === 'palpites' ? 'block' : 'none';
-                    sobre.style.display = id === 'sobre' ? 'block' : 'none';
+                    parceiros.style.display = id === 'parceiros' ? 'block' : 'none';
 
                     palpites.classList.toggle('visible', id === 'palpites');
-                    sobre.classList.toggle('visible', id === 'sobre');
+                    parceiros.classList.toggle('visible', id === 'parceiros');
 
                     if (id === 'palpites') {
                         const animalSelect = document.getElementById('animalSelect');
@@ -701,9 +763,6 @@
                             console.error('Elementos de palpites não encontrados:', { animalSelect, bancaSelect, palpiteOutput });
                             palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção Palpites. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                         }
-                    } else if (id === 'sobre') {
-                        console.log('Inicializando seção Sobre');
-                        setupPromotorForm();
                     }
                 } catch (e) {
                     console.error('Erro na função mostrar:', e);
@@ -928,70 +987,6 @@
                     const puxadaResult = document.getElementById('puxadaResult');
                     if (puxadaResult) {
                         puxadaResult.innerHTML = '<p class="error">Erro ao carregar as puxadas. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
-                    }
-                }
-            }
-
-            function setupPromotorForm() {
-                console.log('setupPromotorForm: Iniciando');
-                try {
-                    const sobre = document.getElementById('sobre');
-                    const nameInput = document.getElementById('promotorName');
-                    const phoneInput = document.getElementById('promotorPhone');
-                    const serviceTimeInput = document.getElementById('promotorServiceTime');
-                    const submitButton = document.getElementById('enviarPromotor');
-
-                    if (!sobre || !nameInput || !phoneInput || !serviceTimeInput || !submitButton) {
-                        throw new Error('Elementos do formulário de promotores não encontrados');
-                    }
-
-                    submitButton.addEventListener('click', () => {
-                        console.log('enviarPromotor click');
-                        try {
-                            const name = nameInput.value.trim();
-                            const phone = phoneInput.value.trim();
-                            const serviceTime = serviceTimeInput.value.trim();
-
-                            if (!name || !phone || !serviceTime) {
-                                const existingError = sobre.querySelector('.error');
-                                if (existingError) existingError.remove();
-                                sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Por favor, preencha todos os campos.</p>';
-                                return;
-                            }
-
-                            if (!phone.match(/\+55[0-9]{10,11}/)) {
-                                const existingError = sobre.querySelector('.error');
-                                if (existingError) existingError.remove();
-                                sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Telefone inválido. Use o formato +5583999999999.</p>';
-                                return;
-                            }
-
-                            const message = `Novo promotor:\nNome: ${name}\nTelefone: ${phone}\nTempo de serviço: ${serviceTime}`;
-                            const encodedMessage = encodeURIComponent(message);
-                            window.open(`https://api.whatsapp.com/send?phone=5583993370071&text=${encodedMessage}`, '_blank');
-
-                            nameInput.value = '';
-                            phoneInput.value = '';
-                            serviceTimeInput.value = '';
-                            const existingError = sobre.querySelector('.error');
-                            if (existingError) existingError.remove();
-                            sobre.querySelector('.sobre-content').innerHTML += '<p class="success">Dados enviados com sucesso!</p>';
-                            setTimeout(() => {
-                                const successMsg = sobre.querySelector('.success');
-                                if (successMsg) successMsg.remove();
-                            }, 3000);
-                        } catch (e) {
-                            console.error('Erro ao enviar formulário de promotores:', e);
-                            const existingError = sobre.querySelector('.error');
-                            if (existingError) existingError.remove();
-                            sobre.querySelector('.sobre-content').innerHTML += '<p class="error">Erro ao enviar os dados. Tente novamente.</p>';
-                        }
-                    });
-                } catch (e) {
-                    console.error('Erro na função setupPromotorForm:', e);
-                    const sobre = document.getElementById('sobre');
-                    if (sobre) {
-                        sobre.innerHTML = '<p class="error">Erro ao carregar o formulário. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                     }
                 }
             }
