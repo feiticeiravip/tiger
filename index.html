@@ -436,6 +436,47 @@
         .parceiro-item .info-content li {
             margin-bottom: 4px;
         }
+        /* New styles for the overlay image */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        .overlay img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .overlay .close-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f59e0b;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .overlay .close-overlay:hover {
+            background: #d97706;
+        }
         @media (max-width: 768px) {
             #palpites-container, #parceiros {
                 padding: 12px;
@@ -506,10 +547,29 @@
             .parceiro-item .info-content {
                 font-size: 12px;
             }
+            .overlay img {
+                max-width: 95%;
+                max-height: 70%;
+            }
+            .overlay .close-overlay {
+                top: 10px;
+                right: 10px;
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- New overlay with clickable image and close button -->
+    <div class="overlay" id="imageOverlay">
+        <a href="https://bancabrasileirabet.com.br/" target="_blank">
+            <img src="bancaparceira.webp" alt="Banca Parceira">
+        </a>
+        <button class="close-overlay" onclick="closeOverlay()">X</button>
+    </div>
+
     <header>
         <h1>TIGER CLUB OFICIAL</h1>
     </header>
@@ -618,6 +678,14 @@
     </footer>
 
     <script>
+        // Function to close the overlay
+        function closeOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
         try {
             const animals = [
                 { name: 'Avestruz', emoji: '🦢', group: 1, tens: ['01', '02', '03', '04'] },
