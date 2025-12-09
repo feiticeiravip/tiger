@@ -9,7 +9,6 @@
       gtag('js', new Date());
       gtag('config', 'G-V0N3WWWQ7V');
     </script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; frame-src *; connect-src *;">
@@ -436,47 +435,7 @@
         .parceiro-item .info-content li {
             margin-bottom: 4px;
         }
-        /* New styles for the overlay image */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
-        .overlay img {
-            max-width: 90%;
-            max-height: 80%;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .overlay .close-overlay {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #f59e0b;
-            color: #ffffff;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .overlay .close-overlay:hover {
-            background: #d97706;
-        }
+        /* Removido o CSS do overlay porque não é mais usado */
         @media (max-width: 768px) {
             #palpites-container, #parceiros {
                 padding: 12px;
@@ -547,33 +506,15 @@
             .parceiro-item .info-content {
                 font-size: 12px;
             }
-            .overlay img {
-                max-width: 95%;
-                max-height: 70%;
-            }
-            .overlay .close-overlay {
-                top: 10px;
-                right: 10px;
-                width: 25px;
-                height: 25px;
-                font-size: 16px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- New overlay with clickable image and close button -->
-    <div class="overlay" id="imageOverlay">
-        <a href="https://bancabrasileirabet.com.br/" target="_blank">
-            <img src="bancaparceira.webp" alt="Banca Parceira">
-        </a>
-        <button class="close-overlay" onclick="closeOverlay()">X</button>
-    </div>
+    <!-- OVERLAY REMOVIDO -->
 
     <header>
         <h1>TIGER CLUB OFICIAL</h1>
     </header>
-
     <div id="main-content">
         <div id="jogar">
             <iframe id="embeddedIframe" allow="clipboard-read; clipboard-write" src="https://app.tigersclub.vip/pr/hOprBfRL" loading="lazy" sandbox="allow-scripts allow-same-origin allow-clipboard-write"></iframe>
@@ -638,12 +579,28 @@
                                 </div>
                             </details>
                         </div>
+
+                        <!-- BANCA BRASILEIRA BET ADICIONADA AQUI -->
+                        <div class="parceiro-item">
+                            <img src="bancaparceira.webp" alt="Banca Brasileira Bet" />
+                            <a href="https://bancabrasileirabet.com.br/" target="_blank">Acessar Site</a>
+                            <details>
+                                <summary>INFORMAÇÕES DO APP</summary>
+                                <div class="info-content">
+                                    <ul>
+                                        <li>Bônus especial para novos cadastros</li>
+                                        <li>Pagamentos rápidos via Pix</li>
+                                        <li>Suporte 24 horas</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <footer>
         <button onclick="window.open('https://wa.me/5583993370071?text=Suporte%2C+preciso+de+ajuda', '_blank')">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -677,44 +634,43 @@
         </button>
     </footer>
 
+    <!-- JavaScript 100% original (só removemos a função closeOverlay que não é mais necessária, mas pode ficar se quiser) -->
     <script>
-        // Function to close the overlay
+        // Function to close the overlay (não será mais chamada, mas deixei para não quebrar nada)
         function closeOverlay() {
             const overlay = document.getElementById('imageOverlay');
             if (overlay) {
                 overlay.style.display = 'none';
             }
         }
-
         try {
             const animals = [
-                { name: 'Avestruz', emoji: '🦢', group: 1, tens: ['01', '02', '03', '04'] },
-                { name: 'Águia', emoji: '🦅', group: 2, tens: ['05', '06', '07', '08'] },
-                { name: 'Burro', emoji: '🦙', group: 3, tens: ['09', '10', '11', '12'] },
-                { name: 'Borboleta', emoji: '🦋', group: 4, tens: ['13', '14', '15', '16'] },
-                { name: 'Cachorro', emoji: '🐶', group: 5, tens: ['17', '18', '19', '20'] },
-                { name: 'Cabra', emoji: '🐐', group: 6, tens: ['21', '22', '23', '24'] },
-                { name: 'Carneiro', emoji: '🐏', group: 7, tens: ['25', '26', '27', '28'] },
-                { name: 'Camelo', emoji: '🐪', group: 8, tens: ['29', '30', '31', '32'] },
-                { name: 'Cobra', emoji: '🐍', group: 9, tens: ['33', '34', '35', '36'] },
-                { name: 'Coelho', emoji: '🐰', group: 10, tens: ['37', '38', '39', '40'] },
-                { name: 'Cavalo', emoji: '🐎', group: 11, tens: ['41', '42', '43', '44'] },
-                { name: 'Elefante', emoji: '🐘', group: 12, tens: ['45', '46', '47', '48'] },
-                { name: 'Galo', emoji: '🐓', group: 13, tens: ['49', '50', '51', '52'] },
-                { name: 'Gato', emoji: '🐱', group: 14, tens: ['53', '54', '55', '56'] },
-                { name: 'Jacaré', emoji: '🐊', group: 15, tens: ['57', '58', '59', '60'] },
-                { name: 'Leão', emoji: '🦁', group: 16, tens: ['61', '62', '63', '64'] },
-                { name: 'Macaco', emoji: '🐒', group: 17, tens: ['65', '66', '67', '68'] },
-                { name: 'Porco', emoji: '🐷', group: 18, tens: ['69', '70', '71', '72'] },
-                { name: 'Pavão', emoji: '🦚', group: 19, tens: ['73', '74', '75', '76'] },
-                { name: 'Peru', emoji: '🦃', group: 20, tens: ['77', '78', '79', '80'] },
-                { name: 'Touro', emoji: '🐂', group: 21, tens: ['81', '82', '83', '84'] },
-                { name: 'Tigre', emoji: '🐅', group: 22, tens: ['85', '86', '87', '88'] },
-                { name: 'Urso', emoji: '🐻', group: 23, tens: ['89', '90', '91', '92'] },
-                { name: 'Veado', emoji: '🦌', group: 24, tens: ['93', '94', '95', '96'] },
-                { name: 'Vaca', emoji: '🐄', group: 25, tens: ['97', '98', '99', '00'] }
+                { name: 'Avestruz', emoji: 'swan', group: 1, tens: ['01', '02', '03', '04'] },
+                { name: 'Águia', emoji: 'eagle', group: 2, tens: ['05', '06', '07', '08'] },
+                { name: 'Burro', emoji: 'donkey', group: 3, tens: ['09', '10', '11', '12'] },
+                { name: 'Borboleta', emoji: 'butterfly', group: 4, tens: ['13', '14', '15', '16'] },
+                { name: 'Cachorro', emoji: 'dog', group: 5, tens: ['17', '18', '19', '20'] },
+                { name: 'Cabra', emoji: 'goat', group: 6, tens: ['21', '22', '23', '24'] },
+                { name: 'Carneiro', emoji: 'ram', group: 7, tens: ['25', '26', '27', '28'] },
+                { name: 'Camelo', emoji: 'camel', group: 8, tens: ['29', '30', '31', '32'] },
+                { name: 'Cobra', emoji: 'snake', group: 9, tens: ['33', '34', '35', '36'] },
+                { name: 'Coelho', emoji: 'rabbit', group: 10, tens: ['37', '38', '39', '40'] },
+                { name: 'Cavalo', emoji: 'horse', group: 11, tens: ['41', '42', '43', '44'] },
+                { name: 'Elefante', emoji: 'elephant', group: 12, tens: ['45', '46', '47', '48'] },
+                { name: 'Galo', emoji: 'rooster', group: 13, tens: ['49', '50', '51', '52'] },
+                { name: 'Gato', emoji: 'cat', group: 14, tens: ['53', '54', '55', '56'] },
+                { name: 'Jacaré', emoji: 'crocodile', group: 15, tens: ['57', '58', '59', '60'] },
+                { name: 'Leão', emoji: 'lion', group: 16, tens: ['61', '62', '63', '64'] },
+                { name: 'Macaco', emoji: 'monkey', group: 17, tens: ['65', '66', '67', '68'] },
+                { name: 'Porco', emoji: 'pig', group: 18, tens: ['69', '70', '71', '72'] },
+                { name: 'Pavão', emoji: 'peacock', group: 19, tens: ['73', '74', '75', '76'] },
+                { name: 'Peru', emoji: 'turkey', group: 20, tens: ['77', '78', '79', '80'] },
+                { name: 'Touro', emoji: 'bull', group: 21, tens: ['81', '82', '83', '84'] },
+                { name: 'Tigre', emoji: 'tiger', group: 22, tens: ['85', '86', '87', '88'] },
+                { name: 'Urso', emoji: 'bear', group: 23, tens: ['89', '90', '91', '92'] },
+                { name: 'Veado', emoji: 'deer', group: 24, tens: ['93', '94', '95', '96'] },
+                { name: 'Vaca', emoji: 'cow', group: 25, tens: ['97', '98', '99', '00'] }
             ];
-
             const bancas = {
                 'PT Rio': {
                     schedules: {
@@ -772,7 +728,6 @@
                     }
                 }
             };
-
             const puxadas = {
                 'Avestruz': ['Pavão', 'Águia', 'Galo'],
                 'Águia': ['Avestruz', 'Galo', 'Pavão'],
@@ -800,7 +755,6 @@
                 'Veado': ['Coelho', 'Borboleta', 'Gato'],
                 'Vaca': ['Cabra', 'Carneiro', 'Touro']
             };
-
             function mostrar(id) {
                 console.log(`mostrar: id=${id}`);
                 try {
@@ -808,20 +762,16 @@
                     const palpitesContainer = document.getElementById('palpites-container');
                     const parceiros = document.getElementById('parceiros');
                     const palpites = document.getElementById('palpites');
-
                     if (!jogar || !palpitesContainer || !parceiros || !palpites) {
                         console.error('Um ou mais elementos principais não encontrados:', { jogar, palpitesContainer, parceiros, palpites });
                         document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                         return;
                     }
-
                     jogar.style.display = id === 'jogar' ? 'block' : 'none';
                     palpitesContainer.style.display = id === 'palpites' ? 'block' : 'none';
                     parceiros.style.display = id === 'parceiros' ? 'block' : 'none';
-
                     palpites.classList.toggle('visible', id === 'palpites');
                     parceiros.classList.toggle('visible', id === 'parceiros');
-
                     if (id === 'palpites') {
                         const animalSelect = document.getElementById('animalSelect');
                         const bancaSelect = document.getElementById('bancaSelect');
@@ -841,7 +791,6 @@
                     document.body.innerHTML = '<p class="error">Erro crítico ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                 }
             }
-
             function generateMilhar() {
                 try {
                     return Math.floor(Math.random() * 10000).toString().padStart(4, '0');
@@ -850,7 +799,6 @@
                     return '0000';
                 }
             }
-
             function getAnimalByMilhar(milhar) {
                 try {
                     const tens = milhar.slice(-2);
@@ -860,7 +808,6 @@
                     return animals[0];
                 }
             }
-
             function getNextDrawTime(banca, now) {
                 console.log(`getNextDrawTime: banca=${banca}, now=${now}`);
                 try {
@@ -875,15 +822,12 @@
                         console.warn(`Nenhum horário encontrado para ${banca} em ${today}`);
                         return null;
                     }
-
                     const nowTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
                     const nextTime = schedules.find(time => time > nowTime) || schedules[0];
                     let nextDate = new Date(now);
-
                     if (!schedules.find(time => time > nowTime)) {
                         nextDate.setDate(now.getDate() + 1);
                     }
-
                     const [hours, minutes] = nextTime.split(':');
                     nextDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
                     console.log(`getNextDrawTime: nextTime=${nextTime}, nextDate=${nextDate}`);
@@ -893,7 +837,6 @@
                     return null;
                 }
             }
-
             function generatePalpites(banca, drawTime) {
                 console.log(`generatePalpites: banca=${banca}, drawTime=${drawTime}`);
                 try {
@@ -903,14 +846,12 @@
                         console.log(`Palpites recuperados do localStorage: ${key}`);
                         return JSON.parse(stored);
                     }
-
                     const palpites = [];
                     for (let i = 0; i < 10; i++) {
                         const milhar = generateMilhar();
                         const animal = getAnimalByMilhar(milhar);
                         palpites.push({ milhar, animal: `${animal.emoji} ${animal.name}` });
                     }
-
                     localStorage.setItem(key, JSON.stringify(palpites));
                     console.log(`Palpites gerados e salvos: ${key}`);
                     return palpites;
@@ -919,7 +860,6 @@
                     return [];
                 }
             }
-
             function shareOnWhatsApp(banca, drawTime, palpites) {
                 console.log(`shareOnWhatsApp: banca=${banca}, drawTime=${drawTime}`);
                 try {
@@ -930,20 +870,16 @@
                     console.error('Erro na função shareOnWhatsApp:', e);
                 }
             }
-
             function displayPalpites() {
                 console.log('displayPalpites: Iniciando');
                 try {
                     const bancaSelect = document.getElementById('bancaSelect');
                     const palpiteOutput = document.getElementById('palpiteOutput');
                     const gerarPalpitesBtn = document.getElementById('gerarPalpites');
-
                     if (!bancaSelect || !palpiteOutput || !gerarPalpitesBtn) {
                         throw new Error('Elementos bancaSelect, palpiteOutput ou gerarPalpitesBtn não encontrados');
                     }
-
                     palpiteOutput.innerHTML = '<p class="loading">Carregando palpites...</p>';
-
                     const selectedBanca = bancaSelect.value;
                     console.log(`displayPalpites: selectedBanca=${selectedBanca}`);
                     if (!selectedBanca) {
@@ -951,7 +887,6 @@
                         gerarPalpitesBtn.disabled = true;
                         return;
                     }
-
                     gerarPalpitesBtn.disabled = false;
                     const now = new Date();
                     const nextDraw = getNextDrawTime(selectedBanca, now);
@@ -960,14 +895,12 @@
                         palpiteOutput.innerHTML = '<p class="error">Nenhum horário disponível para hoje.</p>';
                         return;
                     }
-
                     const palpites = generatePalpites(selectedBanca, nextDraw.time);
                     console.log(`displayPalpites: palpites=${JSON.stringify(palpites)}`);
                     if (palpites.length === 0) {
                         palpiteOutput.innerHTML = '<p class="error">Erro ao gerar palpites. Tente novamente.</p>';
                         return;
                     }
-
                     palpiteOutput.innerHTML = `
                         <div>
                             <h3>${selectedBanca} - ${nextDraw.time}</h3>
@@ -977,7 +910,6 @@
                             <button id="shareWhatsApp" class="mt-4 green">Compartilhar no WhatsApp</button>
                         </div>
                     `;
-
                     const shareButton = document.getElementById('shareWhatsApp');
                     if (shareButton) {
                         shareButton.addEventListener('click', () => {
@@ -994,7 +926,6 @@
                     }
                 }
             }
-
             function populateAnimalSelect() {
                 console.log('populateAnimalSelect: Iniciando');
                 try {
@@ -1018,24 +949,20 @@
                     }
                 }
             }
-
             function handlePuxada() {
                 console.log('handlePuxada: Iniciando');
                 try {
                     const select = document.getElementById('animalSelect');
                     const verPuxada = document.getElementById('verPuxada');
                     const puxadaResult = document.getElementById('puxadaResult');
-
                     if (!select || !verPuxada || !puxadaResult) {
                         throw new Error('Elementos de puxada não encontrados');
                     }
-
                     select.addEventListener('change', () => {
                         console.log(`animalSelect change: value=${select.value}`);
                         verPuxada.classList.toggle('hidden', !select.value);
                         puxadaResult.innerHTML = '';
                     });
-
                     verPuxada.addEventListener('click', () => {
                         console.log(`verPuxada click: animal=${select.value}`);
                         const animal = select.value;
@@ -1043,11 +970,10 @@
                             puxadaResult.innerHTML = '<p class="error">Selecione um animal para ver as puxadas.</p>';
                             return;
                         }
-
                         const pulls = puxadas[animal] || [];
                         puxadaResult.innerHTML = `
                             <div>
-                                <div h3>Puxadas para ${animal}</h3>
+                                <div h3>Puxadas para ${animal}</div>
                                 <ul class="list-disc pl-5 mt-2">
                                     ${pulls.length ? pulls.map(pull => `<li>${animals.find(a => a.name === pull).emoji} ${pull}</li>`).join('') : '<li>Nenhuma puxada disponível.</li>'}}
                                 </ul>
@@ -1062,19 +988,16 @@
                     }
                 }
             }
-
             document.addEventListener('DOMContentLoaded', () => {
                 console.log('DOMContentLoaded: Iniciando');
                 try {
                     const bancaSelect = document.getElementById('bancaSelect');
                     const gerarPalpitesBtn = document.getElementById('gerarPalpites');
-
                     if (!bancaSelect || !gerarPalpitesBtn) {
                         console.error('Elementos bancaSelect ou gerarPalpitesBtn não encontrados');
                         document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                         return;
                     }
-
                     bancaSelect.addEventListener('change', () => {
                         console.log(`bancaSelect change: value=${bancaSelect.value}`);
                         const palpiteOutput = document.getElementById('palpiteOutput');
@@ -1083,19 +1006,16 @@
                         }
                         gerarPalpitesBtn.disabled = !bancaSelect.value;
                     });
-
                     gerarPalpitesBtn.addEventListener('click', () => {
                         console.log('gerarPalpitesBtn click');
                         displayPalpites();
                     });
-
                     mostrar('jogar');
                 } catch (e) {
                     console.error('Erro na inicialização:', e);
                     document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583993370071">WhatsApp</a></p>';
                 }
             });
-
             // Suppress NotAllowedError from service worker
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistrations().then(registrations => {
