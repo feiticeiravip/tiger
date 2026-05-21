@@ -471,5 +471,168 @@
             mostrar('jogar');
         });
     </script>
+<!-- POPUP SORTECLUB -->
+<div id="popup-sorteclub">
+
+    <div class="popup-overlay"></div>
+
+    <div class="popup-container">
+
+        <button id="fechar-popup">✕</button>
+
+        <a href="https://app.sorteclub.com/pr/uLjK7Sh8"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="popup-link">
+
+            <img src="sorteclub.webp" alt="Sorte Club">
+
+            <div class="popup-button">
+                CADASTRE-SE
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+<style>
+
+/* FUNDO ESCURO */
+#popup-sorteclub{
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn .25s ease;
+}
+
+/* ESCURECER FUNDO */
+.popup-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+}
+
+/* CAIXA CENTRAL */
+.popup-container{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    overflow: hidden;
+    animation: popupShow .3s ease;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+}
+
+/* LINK */
+.popup-link{
+    display: block;
+    text-decoration: none;
+    background: #111;
+}
+
+/* IMAGEM */
+.popup-link img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* BOTÃO */
+.popup-button{
+    background: linear-gradient(135deg,#facc15,#eab308);
+    color: #111;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    padding: 18px;
+    letter-spacing: 1px;
+    transition: .2s;
+}
+
+.popup-button:hover{
+    background: linear-gradient(135deg,#fde047,#facc15);
+}
+
+/* BOTÃO FECHAR */
+#fechar-popup{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 5;
+    transition: .2s;
+}
+
+#fechar-popup:hover{
+    transform: scale(1.1);
+    background: rgba(0,0,0,0.9);
+}
+
+/* ANIMAÇÕES */
+@keyframes popupShow{
+    from{
+        opacity: 0;
+        transform: scale(.9);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/* MOBILE */
+@media(max-width: 480px){
+
+    .popup-container{
+        max-width: 95%;
+        border-radius: 20px;
+    }
+
+    .popup-button{
+        font-size: 20px;
+        padding: 16px;
+    }
+
+}
+
+</style>
+
+<script>
+
+document
+.getElementById('fechar-popup')
+.addEventListener('click', function(){
+
+    document
+    .getElementById('popup-sorteclub')
+    .style.display = 'none';
+
+});
+
+</script>
 </body>
 </html>
